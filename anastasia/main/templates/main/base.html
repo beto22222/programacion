@@ -1,0 +1,166 @@
+{% load staticfiles %} 
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'icons/foundation-icons.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/foundation-flex.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Ravi+Prakash" rel="stylesheet">
+    <link rel="stylesheet"  type="text/css" href="{% static 'css/app.css' %}">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    {% block estilo %}{% endblock %}
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+     <link href="https://fonts.googleapis.com/css?family=Comfortaa|Patua+One" rel="stylesheet"> 
+  </head>
+  <body>
+
+<!--  Off Canvas Menu  -->
+      <div class="off-canvas-wrapper">
+        <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper >
+          <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+
+            <!-- Close button -->
+            <button class="close-button" aria-label="Close menu" type="button" data-close>
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+            <!-- Menu -->
+            <nav data-magellan>
+              
+                  <ul class="dropdown menu vertical" data-drilldown>
+                    
+                    
+                    
+                    <li>
+                      <a href="{% url 'principal' %}">
+                        {% if request.session.lang == "es" %}
+                            Inicio
+                         {% else %}
+                            Home
+                         {% endif %}
+                       </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'carrito' %}"><i class="fi-shopping-cart carrito"></i></a>
+                    </li>
+                    <li>
+                      <a href="Nosotros.html">
+                        {% if request.session.lang == "es" %}
+                            Nosotros
+                         {% else %}
+                            About us
+                         {% endif %}
+                      </a>
+                    </li>
+                  </ul>
+            </nav>
+
+          </div>
+
+          <div class="off-canvas-content" data-off-canvas-content>
+            <!-- Main menu -->
+           <section data-sticky-container >
+              <div id="sticky" class="data-sticky" data-sticky data-options="marginTop:0;" data-top-anchor="150" data-sticky-on="small">
+
+                <nav id="menu-container" class="title-bar" data-magellan data-bar-offset="29">
+                  <ul class="menu align-spaced show-for-small-only">
+                    
+                    <li  class="align-spaced"  data-toggle="offCanvas">
+                      <a href="#">
+                        <i class="fi-list icono-menu"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#"><img src="{% static 'assets/images/logo.jpg' %}"></a>
+                    </li>
+                  </ul>
+                  
+                  <a href="#" class="show-for-medium"><img src="{% static 'assets/images/logo.jpg' %}"></a>
+                  <ul class="dropdown menu align-spaced show-for-medium" data-dropdown-menu>
+                    
+                    <li>
+                      <a href="{% url 'principal' %}">
+                        {% if request.session.lang == "es" %}
+                            Inicio
+                         {% else %}
+                            Home
+                         {% endif %}
+
+                      </a>
+                    </li>
+                    <li>
+                      <a href="Nosotros.html">
+                        {% if request.session.lang == "es" %}
+                            Nosotros
+                         {% else %}
+                            About us
+                         {% endif %}
+
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'carrito' %}"><i class="fi-shopping-cart carrito"></i></a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </section>
+
+            <div class="len">
+              <button class="len_en btn_len" id="len_en">en</button>
+              <button class="len_es btn_len" id="len_es">es</button>
+            </div>
+
+           
+            {% block contenido %}{% endblock %}
+            <footer>
+              
+            </footer>
+
+
+
+
+
+
+
+            
+          </div>
+        </div>
+      </div>
+
+    <!-- /Off Canvas Menu  -->
+
+    <script src="{% static 'js/vendor/jquery.js' %}"></script>
+    <script src="{% static 'js/vendor/what-input.js' %}"></script>
+    <script src="{% static 'js/vendor/foundation.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+  </body>
+</html>
+
+<script type="text/javascript">
+
+
+$(".btn_len").click(function(e) {
+    console.log(window.location.pathname);
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "{% url 'switch_to_len' %}",
+        data: { 'i':window.location.href,'len':this.id
+        },
+        success: function(result) {
+            console.log(window.location.href);
+            location.reload();
+        },
+        error: function(result) {
+            console.log('error');
+        }
+    });
+});
+</script>

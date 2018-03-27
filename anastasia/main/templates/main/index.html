@@ -1,0 +1,88 @@
+
+{% extends "main/base.html" %}
+{% block titulo %}Inicio{% endblock %}
+{% block estilo %}
+  
+        {% load staticfiles %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/stevenschobert/instafeed.js/master/instafeed.min.js">
+
+  <script src="https://snapwidget.com/js/snapwidget.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        
+  
+{% endblock %}
+{% block contenido %}
+        {% load staticfiles %}
+            <header id="banner">
+              <iframe src="{% url 'instagram'%}" class="snapwidget-widget instagram" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden;position: absolute;  width: 50%;height: 90%;position: absolute;
+max-height: 900px;margin-left: 40%;  "></iframe>
+              <img src="{% static 'img/bann.jpg' %}">
+              
+            </header>
+            <main >
+              <div id="principal" class="row" >
+                <h2>{% if request.session.lang == "es" %}
+                            Diseños destacados
+                         {% else %}
+                            Best designs
+                         {% endif %}
+                </h2>
+                <div class="products">
+                  
+                  {% for pr in best_products %}
+                      <div class="item">
+                        <div class="image"><img src="{{ pr.images.first.image.url}}"></div>
+                        <div class="datos">
+                          <div class="d1">
+                            <p class="name">{{ pr.name }}</p>
+                            <p class="price">${{ pr.price }}</p>
+                          </div>
+                          <div class="valuacion"><p>{{ pr.punctuation }}</p><li class="fi-heart"></li></div>
+                          
+                        </div>
+                        <div class="options">
+                          <a href="{% url 'producto' sku=pr.name %}"><button>
+                            {% if request.session.lang == "es" %}
+                              Ver mas
+                           {% else %}
+                              More
+                           {% endif %}
+                         </button></a>
+                          <a href="#"><button  id="{{pr.slug}}" class="add"><i class="fi-shopping-cart carrito_btn">Agregar</i></button></a>
+                        </div>
+                      </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </main>
+
+
+<script type="text/javascript">
+
+$("button").click(function(e) {
+
+    let id=this.id;
+    let base="/add_to_car/";
+    console.log(this.className);
+    if (this.className=='add') {
+
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: base+id,
+          data: { 
+          },
+          success: function(result) {
+              console.log('ok');
+          },
+          error: function(result) {
+              console.log('error');
+          }
+      });
+    }
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+content{
+	display: flex;
+	margin-top: 60px;
+}
+.articulos{
+	font-family: Arial, Helvetica, sans-serif, SourceLight;
+	font-size: 18px;
+	color: #63738C;
+}
+.parrafo ol{
+	list-style-type: none;
+}
+#imagen-principal{
+	margin-bottom: 20px;
+}
+
+li>h2{
+	font-size: 1.3em;
+	color: #216E98;
+}
+li>p{
+	font-size: 1em;
+}
+#titulo{
+	color: #216E98;
+	transform:scale(1,1.4);
+}
+.parrafo{
+	font-size: #222222;
+	text-align: justify;
+}

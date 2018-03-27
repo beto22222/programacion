@@ -1,0 +1,32 @@
+.a_carrito{
+	background-color: #B55E54;
+	color: #fff;
+	padding: 15px;
+	font-size: 20px;
+}
+.evaluacion li{
+
+	color: #555;
+	padding: 10px;
+	font-size: 20px;
+	 list-style-type: none;
+}
+content{
+	margin-top: 40px;
+	min-height: 500px;
+}
+.botones{
+	margin-top: 30px;
+	display: flex;
+	justify-content: space-between;
+}
+content strong{
+	
+	font-size: 18px;
+}
+h2{
+	margin-bottom: 20px;
+}
+.orbit-image{
+	max-height: 400px;
+}

@@ -1,0 +1,55 @@
+{% extends "main/base.html" %}
+{% block titulo %}{{ product.name }}{% endblock %}
+{% block estilo %}
+  
+        {% load staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/producto.css' %}">
+{% endblock %}
+
+{% block contenido %}
+        {% load staticfiles %}
+        <content class="row">
+              <div class="articulos column small-12 medium-5">
+
+                <div class="orbit" role="region" data-orbit data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
+                  <ul class="orbit-container">
+                    <button class="orbit-previous">&#9664;&#xFE0E;</button>
+                    <button class="orbit-next">&#9654;&#xFE0E;</button>
+
+                    {% for img in product.images.all %}
+                    <li class="orbit-slide">
+                      <img class="orbit-image" src="{{ img.image.url }}">
+                    </li>
+                    {% endfor %}
+
+                  </ul>
+                  <nav class="hide-for-small-only orbit-bullets">
+                    
+                    {% for pin in pines %}
+                      
+                      <button class="is-active" data-slide="{{pin}}"></button>
+                    {% endfor %}
+                  </nav>
+              </div>
+
+              </div>
+              <div class="extras column small-12 medium-7">
+                <h2>{{ product.name }}</h2>
+                <strong>{{ product.price }}</strong>
+                <p>{{ product.description_es }}</p>
+                <div class="botones">
+                  <button class="a_carrito">
+                          {% if request.session.lang == "es" %}
+                            
+                            Añadir al carrito
+                         {% else %}
+                            Add to bag
+                         {% endif %}
+                       </button>
+                  <button class="evaluacion"><li class="fi-heart">{{ product.punctuation }}</li></button>
+                  
+                </div>
+              </div>
+            </content>
+
+{% endblock %}

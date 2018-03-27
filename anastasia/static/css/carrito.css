@@ -1,0 +1,46 @@
+content img{
+	width: 100%;
+}
+table tr:nth-child(1) th:nth-child(1){
+	width: 10%;
+}
+table {
+	margin-top: 30px;
+	text-align: center;
+}
+table i{
+	color: red;
+}
+table tr:nth-child(1) th:nth-child(5){
+	width: 15%;
+}
+content{
+}
+.table {
+}
+.cantidad{
+	height: 100px;
+}
+.cantidad > input{
+	width: 21%;
+	align-content: center;
+	margin-left: 40%;
+}
+.pay{
+	background-color: #6D3A4B;
+	color: #fff;
+	font-size: 18px;
+	padding: 10px;
+	width: 100%;
+}
+
+@media (max-width: 640px) {
+	table img{
+		visibility: hidden;
+	}
+	.cantidad > input{
+		width: 60%;
+		align-content: center;
+		margin-left: 15%;
+	}
+}

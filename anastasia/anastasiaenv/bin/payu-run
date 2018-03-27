@@ -1,0 +1,9 @@
+#!/home/ubuntu/anastasia/anastasiaenv/bin/python3
+# coding: utf-8
+
+# Force Python version
+from payu import reversion
+reversion.repython('2.7.6', __file__)
+
+from payu.subcommands import run_cmd
+run_cmd.runscript()

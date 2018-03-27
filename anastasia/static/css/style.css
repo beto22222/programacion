@@ -1,0 +1,163 @@
+body{
+	margin:0px;
+    font-family: 'Patua One', cursive;
+    font-family: 'Comfortaa', cursive;
+
+}
+header{
+    width: 100%;
+}
+header h2{
+    padding-left: 43px;
+    font-size: 45px;
+}
+header p{
+    padding-left: 43px;
+    font-size: 30px;
+}
+.instagram{
+
+}
+.lenguage{
+	background-color:#0B486B;
+	color: #fff;
+	margin-left: 85%;
+	font-size: 18px;
+	margin-bottom: -54px;
+	position: fixed;
+	width: 73px;
+	border-radius: 4px;
+}
+.en{
+	border-right: #fff 1px solid;
+}
+.products{
+	display: grid;
+	grid-template-columns: repeat(auto-fill,250px);
+	grid-gap: 25px;
+	width: 100%;
+	justify-content: center;
+}
+.products .item {
+	margin-top: -15px; 
+}
+.products .item img{
+	width: 100%;
+}
+.image{
+	
+	overflow: hidden;
+	max-height: 400px;
+	/*overflow: hidden;*/
+}
+.options{
+	visibility: hidden;
+	 color: white;
+	 width: 100%;
+	 height: 50px;
+	 margin-top: -10px; 
+	 font-size: 20px;
+	 display: flex;
+	 justify-content: space-between;
+
+}
+.options a:nth-child(1) button{
+    background: #6D3A4B;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.options a:nth-child(2) button{
+    background: #FC954A;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.options a:nth-child(1) {
+    width: 30%;
+}
+.options a:nth-child(2) {
+    width: 70%;
+}
+.options button{
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+	color: #fff;
+	padding: 0px 5px 0px 5px;
+}
+.datos{
+
+	background: rgba(40,51,57,.7);
+	 z-index: .1;
+	 padding: 10px;
+	 margin-top: -70px;
+	 margin-bottom: 10px;
+	 position: relative;
+	 color: white;
+	 display: flex;
+	 justify-content: space-between;
+	 list-style-type: none;
+}
+
+.item:hover .datos{
+
+	visibility: hidden;
+	
+}
+.item:hover .options{
+	visibility: visible;
+}
+.datos .valuacion{
+	display: flex;
+}
+.datos li{
+	margin-left: 5px;
+	color: #F4323B;
+}
+
+.datos p{
+	font-size: 16px;
+	margin: 0px;
+}
+#principal{
+	justify-content: center;
+}
+#principal h2{
+	font-size: 45px;
+	color: #6D3A4B;
+	margin-top: 80px;
+	margin-bottom: 80px;
+	
+    font-family: 'Comfortaa', cursive;
+}
+
+#banner{ 
+    padding-top: 0px;
+    width: 100%;
+}
+#banner img{ 
+
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+   header h2{
+    	font-size: 30px;
+	}
+
+	header p{
+    	font-size: 20px;
+	}
+	#principal h2{
+
+		margin-top: -30px;
+
+		font-size: 35px;
+	}
+
+}
+@media (max-width: 640px) {
+	    
+	#principal h2{
+		margin-top: -50px;
+		}
+}

@@ -1,0 +1,94 @@
+
+{% extends "main/base.html" %}
+{% block titulo %}Carrito{% endblock %}
+{% block estilo %}
+  
+        {% load staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/carrito.css' %}">
+{% endblock %}
+{% block contenido %}
+        {% load staticfiles %}
+
+
+
+
+
+
+
+            <content class="row">
+              <table>
+                <tr>
+                  <th></th>
+                  {% if request.session.lang == "es" %}
+                        
+                  <th>Nombre</th>
+                  <th>Cantidad</th>
+                  <th>Precio</th>
+                  {% else %}
+
+                  <th>Name</th>
+                  <th>Qty</th>
+                  <th>Price</th>
+                  {% endif %}
+                  <th></th>
+                </tr>
+                {% for pr in products %}
+                <tr>
+                  <td><img src="{{ pr.images.first.image.url }}"></td>
+                  <td>{{ pr.name }}</td>
+                  <td class="cantidad">
+                    <input class="qty" type="number" value="{{ pr.qty }}" name="quantity" min="1" max="500" id="{{ pr.slug }}" />
+                  </td>
+                  <td>{{ pr.price }}</td>
+                  <td><button><i class="fi-x"></i></button></td>
+                </tr>
+                {% endfor %}
+                <tr class="ultimo" style="background-color: #fff;">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td id="end_cost">{{ end_cost }}</td>
+                  <td><button class="pay">
+                          {% if request.session.lang == "es" %}
+                            
+                            Comprar
+                         {% else %}
+                            Buy
+                         {% endif %}
+                       </button></td>
+                </tr>
+              </table> 
+            </content>
+
+
+<script type="text/javascript">
+
+$(".qty").click(function(e) {
+
+
+    let id=this.id;
+
+    let base="/set_new_value_to_car/";
+
+    let input = document.getElementById(id);
+    let end_cost = document.getElementById('end_cost');
+    console.log(this.className);
+    if (this.className=='qty') {
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: base+id,
+          data: { 'value':input.value
+          },
+          success: function(json) {
+
+              end_cost.innerHTML=json['end_cost']
+          },
+          error: function(result) {
+              console.log('error');
+          }
+      });
+    }
+});
+</script>
+{% endblock %}
