@@ -1,4 +1,4 @@
-{% load staticfiles %} 
+{% load staticfiles %}  
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
   <head>
@@ -32,21 +32,28 @@
             <!-- Menu -->
             <nav data-magellan>
               
-                  <ul class="dropdown menu vertical" data-drilldown>
-                    
+                  <ul class="dropdown menu vertical" id="mm" data-drilldown>
                     
                     
                     <li>
+                      <a href="#"><img src="{% static 'assets/images/logo.jpg' %}"></a>
+                    </li>
+                    <li>
                       <a href="{% url 'principal' %}">
                         {% if request.session.lang == "es" %}
-                            Inicio
+                            Productos
                          {% else %}
-                            Home
+                            Products
                          {% endif %}
                        </a>
                     </li>
                     <li>
-                      <a href="{% url 'carrito' %}"><i class="fi-shopping-cart carrito"></i></a>
+                      <a href="{% url 'carrito' %}"><i class="fi-shopping-cart">
+                        {% if request.session.lang == "es" %}
+                            Carrito
+                         {% else %}
+                            Bag
+                         {% endif %}</i></a>
                     </li>
                     <li>
                       <a href="Nosotros.html">
@@ -86,9 +93,9 @@
                     <li>
                       <a href="{% url 'principal' %}">
                         {% if request.session.lang == "es" %}
-                            Inicio
+                            Productos
                          {% else %}
-                            Home
+                            Products
                          {% endif %}
 
                       </a>
@@ -118,9 +125,7 @@
 
            
             {% block contenido %}{% endblock %}
-            <footer>
-              
-            </footer>
+            
 
 
 
@@ -134,22 +139,23 @@
       </div>
 
     <!-- /Off Canvas Menu  -->
-
     <script src="{% static 'js/vendor/jquery.js' %}"></script>
     <script src="{% static 'js/vendor/what-input.js' %}"></script>
     <script src="{% static 'js/vendor/foundation.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
   </body>
 </html>
 
+{% block js %}{% endblock %}
 <script type="text/javascript">
-
-
+  
+  
 $(".btn_len").click(function(e) {
     console.log(window.location.pathname);
     e.preventDefault();
-    $.ajax({
+    $.ajax({ 
         type: "GET",
         url: "{% url 'switch_to_len' %}",
         data: { 'i':window.location.href,'len':this.id

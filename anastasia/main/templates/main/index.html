@@ -2,7 +2,7 @@
 {% extends "main/base.html" %}
 {% block titulo %}Inicio{% endblock %}
 {% block estilo %}
-  
+   
         {% load staticfiles %}
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
@@ -50,7 +50,13 @@ max-height: 900px;margin-left: 40%;  "></iframe>
                               More
                            {% endif %}
                          </button></a>
-                          <a href="#"><button  id="{{pr.slug}}" class="add"><i class="fi-shopping-cart carrito_btn">Agregar</i></button></a>
+                          <a href="#"><button  id="{{pr.slug}}" class="add"><i class="fi-shopping-cart carrito_btn">
+                            {% if request.session.lang == "es" %}
+                              Agregar
+                           {% else %}
+                              Add
+                           {% endif %}
+                          </i></button></a>
                         </div>
                       </div>
                   {% endfor %}
@@ -59,30 +65,9 @@ max-height: 900px;margin-left: 40%;  "></iframe>
             </main>
 
 
-<script type="text/javascript">
 
-$("button").click(function(e) {
-
-    let id=this.id;
-    let base="/add_to_car/";
-    console.log(this.className);
-    if (this.className=='add') {
-
-      e.preventDefault();
-      $.ajax({
-          type: "GET",
-          url: base+id,
-          data: { 
-          },
-          success: function(result) {
-              console.log('ok');
-          },
-          error: function(result) {
-              console.log('error');
-          }
-      });
-    }
-});
-</script>
 
 {% endblock %}
+{% block js %}
+    <script src="{% static 'js/index.js' %}"></script>
+  {% endblock %}

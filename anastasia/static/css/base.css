@@ -1,9 +1,6 @@
 body{
 	margin: 0px;
 }
-.carrito{
-	font-size: 30px;
-}
 .menu{
 	width: auto;
 }
@@ -42,16 +39,23 @@ body{
 .len_en{
 	border-right: #fff 1px solid;
 }
-
-@media (max-width: 800px) {
-    
-	#sticky a img{
-		width: 100px;
-		margin-top: 40px;
-		margin-left:0px;
-	}
+#mm li a {
+	font-size: 19px;
+    color: #FFF;
 }
+#mm li img {
+	width: 30%;
+} 
 
+.carrito{
+	font-size: 30px;
+}
+#offCanvas{
+	background: #283339;
+}
+#mm li{
+	border-bottom: 1px #fff solid;
+}
 @media (max-width: 640px) {
     .len{
     	margin-left: 75%;
@@ -61,6 +65,8 @@ body{
 		height: 0px;
 	}
 }
+
+
 
 .data-sticky {
   width: 100%;

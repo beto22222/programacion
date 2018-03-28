@@ -154,6 +154,10 @@ header p{
 		font-size: 35px;
 	}
 
+.instagram{
+	visibility: hidden;
+}
+
 }
 @media (max-width: 640px) {
 	    

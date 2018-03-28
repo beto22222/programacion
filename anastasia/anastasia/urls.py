@@ -18,5 +18,6 @@ urlpatterns = [
     path('switch_to_len/', views.switch_to_len,name='switch_to_len'),
     path('instagram/', views.instagram,name='instagram'),
     path('set_new_value_to_car/<str:slug>/', views.set_new_value_to_car,name='set_new_value_to_car'),
+    path('quit_to_car/<str:slug>/', views.quit_to_car,name='quit_to_car'),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

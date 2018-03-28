@@ -4,15 +4,14 @@ from django.shortcuts import render,redirect
 from .models import Product
 import json
 from django.views.generic import TemplateView
-import requests
+import requests 
 
 
 
 class CarritoView(TemplateView):
     template_name='main/carrito.html'
     def get_context_data(self,*args,**kwargs):
-        if self.request.session.get('lang')==None:
-            self.request.session['lang']='es'
+        check(self.request)
         p=self.request.session.get('objects_oncar')
 
         products=[]
@@ -39,8 +38,7 @@ class IndexView(TemplateView):
 
     template_name='main/index.html'
     def get_context_data(self,*args,**kwargs):
-        if self.request.session.get('lang')==None:
-            self.request.session['lang']='es'
+        check(self.request)
         best_products = Product.objects.order_by('-id')[:30]
         context = {
             'best_products': best_products,
@@ -58,8 +56,7 @@ class IndexView(TemplateView):
 class ProductView(TemplateView):
     template_name='main/product.html'
     def get_context_data(self,*args,**kwargs):
-        if self.request.session.get('lang')==None:
-            self.request.session['lang']='es'
+        check(self.request)
         try:
             product = Product.objects.get(name = kwargs['sku'])    
         except Product.DoesNotExist as e:
@@ -100,8 +97,19 @@ def quit_to_car(request,slug):
         del data[clasif.index(True)]
     request.session['objects_oncar']=data
 
+    
+    end_cost=0
 
-    return(HttpResponseRedirect('/'))
+    print('--------------------AQUI--------------------')
+    if len(data):
+        for i in data:
+            d=Product.objects.get(slug = i[0])
+            end_cost+=d.price*i[1]
+    context = {
+        'end_cost':str(end_cost)
+    }
+
+    return(HttpResponse(json.dumps(context),content_type='application/json'))
 
 def set_new_value_to_car(request,slug):
     
@@ -157,3 +165,9 @@ def instagram(request):
 
     return HttpResponse(template.render(context, request))
 
+def check(request):
+    if request.session.get('objects_oncar')==None:
+        request.session['objects_oncar']=[]
+
+    if request.session.get('lang')==None:
+        request.session['lang']='es'

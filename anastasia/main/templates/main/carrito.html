@@ -1,5 +1,5 @@
-
-{% extends "main/base.html" %}
+ 
+{% extends "main/base.html" %} 
 {% block titulo %}Carrito{% endblock %}
 {% block estilo %}
   
@@ -33,14 +33,14 @@
                   <th></th>
                 </tr>
                 {% for pr in products %}
-                <tr>
+                <tr id="{{ pr.slug }}">
                   <td><img src="{{ pr.images.first.image.url }}"></td>
                   <td>{{ pr.name }}</td>
                   <td class="cantidad">
-                    <input class="qty" type="number" value="{{ pr.qty }}" name="quantity" min="1" max="500" id="{{ pr.slug }}" />
+                    <input class="qty" type="number" value="{{ pr.qty }}" name="quantity" min="1" max="500" />
                   </td>
                   <td>{{ pr.price }}</td>
-                  <td><button><i class="fi-x"></i></button></td>
+                  <td><button class="delete"><i class="fi-x"></i></button></td>
                 </tr>
                 {% endfor %}
                 <tr class="ultimo" style="background-color: #fff;">
@@ -61,34 +61,8 @@
             </content>
 
 
-<script type="text/javascript">
-
-$(".qty").click(function(e) {
-
-
-    let id=this.id;
-
-    let base="/set_new_value_to_car/";
-
-    let input = document.getElementById(id);
-    let end_cost = document.getElementById('end_cost');
-    console.log(this.className);
-    if (this.className=='qty') {
-      e.preventDefault();
-      $.ajax({
-          type: "GET",
-          url: base+id,
-          data: { 'value':input.value
-          },
-          success: function(json) {
-
-              end_cost.innerHTML=json['end_cost']
-          },
-          error: function(result) {
-              console.log('error');
-          }
-      });
-    }
-});
-</script>
 {% endblock %}
+
+{% block js %} 
+    <script src="{% static 'js/carrito.js' %}"></script>
+  {% endblock %}
