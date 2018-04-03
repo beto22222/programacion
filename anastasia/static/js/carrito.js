@@ -1,4 +1,4 @@
-$(".qty").click(function(e) {
+$(".qty").change(function(e) {
  
 
     let id=this.parentElement.parentElement.id;

@@ -168,11 +168,11 @@ def switch_to_len(request):
 
 def instagram(request):
     template = loader.get_template('main/instagram.html')
-    r = requests.get('https://snapwidget.com/embed/526914')
+    r = requests.get('https://snapwidget.com/embed/527909')
 
 
     
-    r=r.text
+    r=r.text.replace('width="100%"','')
     context = {'pag':r.replace('width="100%"','')}
 
     return HttpResponse(template.render(context, request))
