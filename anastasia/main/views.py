@@ -111,6 +111,19 @@ def quit_to_car(request,slug):
 
     return(HttpResponse(json.dumps(context),content_type='application/json'))
 
+def like(request,slug):
+    obj = Product.objects.get(slug=slug)
+    obj.punctuation =obj.punctuation+1
+    obj.save()
+    
+    context = {
+        'punctuation':str(obj.punctuation),
+    }
+    print('-------------------')
+    print(json.dumps(context))
+    print('-------------------')
+    return(HttpResponse(json.dumps(context),content_type='application/json'))
+
 def set_new_value_to_car(request,slug):
     
     if request.session.get('objects_oncar')==None:
@@ -155,13 +168,12 @@ def switch_to_len(request):
 
 def instagram(request):
     template = loader.get_template('main/instagram.html')
-    r = requests.get('https://snapwidget.com/embed/523784')
+    r = requests.get('https://snapwidget.com/embed/526914')
 
 
     
     r=r.text
-    r=r.replace('<a href','<a href="https://www.instagram.com/anastasia.global/" name')
-    context = {'pag':r.replace('width: 33.333333333333%;','')}
+    context = {'pag':r.replace('width="100%"','')}
 
     return HttpResponse(template.render(context, request))
 

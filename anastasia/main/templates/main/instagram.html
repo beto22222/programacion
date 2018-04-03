@@ -1,18 +1,20 @@
 
 {% autoescape off %}{{ pag }}{% endautoescape %}
 <style type="text/css">
-body{
-    margin-left: -76px;
-}
-    .media-list-item {
-        width: 80%;
-        list-style-type: none;
+    .media-grid{
+        width: 100%;
+        display: flex;
     }
-    .media-list-item *{
+    li{
+        width: 18%;
+        list-style-type: none;
+        padding: 1%;
+    }
+    li *{
         width: 100%;
     }
-    .media-grid{
-        grid-template-columns: auto auto auto;
-display: grid;
+    *{
+        margin: 0px;
+        padding: 0px;
     }
 </style>

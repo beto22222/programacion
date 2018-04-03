@@ -16,7 +16,7 @@ header p{
     font-size: 30px;
 }
 .instagram{
-
+	margin-top: 10px;
 }
 .lenguage{
 	background-color:#0B486B;
@@ -59,6 +59,10 @@ header p{
 	 font-size: 20px;
 	 display: flex;
 	 justify-content: space-between;
+
+}
+.options a:nth-child(2) button:active {
+	background: #DC752A;
 
 }
 .options a:nth-child(1) button{
