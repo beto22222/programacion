@@ -50,5 +50,5 @@ $(".delete").click(function(e) {
               console.log('error');
           }
       });
-    
 });
+

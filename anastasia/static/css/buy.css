@@ -1,0 +1,71 @@
+
+content{
+    margin-top: 50px;
+}
+/* ;Style the tab */
+.tab {
+    overflow: hidden;
+    border-bottom: 1px solid #6D3A4B;
+    padding: 0px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    width: 50%;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    border-radius: 0px;
+
+    color: #fff;
+    background: #6D3A4B;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+.botones button{
+    width: 100%;
+    margin: auto;
+    height: 40px;
+    color: #FFF;
+}
+.botones {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding:20px 0px 20px 0px;
+}
+.btn_iniciar{
+    background: #6D3A4B;
+}
+form{
+    font-size: 18px;
+    margin-top: 20px;
+}
+label{
+    font-size: 17px;
+}
+.row{
+    justify-content: center;
+}
+.date .select{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.date span{
+    width: 100%;
+}
+.date label{
+    width: 40%;
+}

@@ -1,0 +1,114 @@
+ 
+{% extends "main/base.html" %} 
+{% block titulo %}Log in{% endblock %}
+{% block estilo %}
+  
+        {% load staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/buy.css' %}">
+{% endblock %}
+{% block contenido %}
+        {% load staticfiles %}
+
+
+
+
+
+
+
+            <content class="row">
+              	
+				<div class="tab column medium-7 small-12">
+				  <button class="tablinks" onclick="openTab(event, 'IniciarSession')" id='IS_Btn'>Informacion de envio</button>
+				</div>
+
+				<div id="IniciarSession" class="tabcontent column medium-7 small-12">
+					<form>
+					 	<label>
+						  	Nombre
+		  					<input type="text">
+						</label>
+					 	<label>
+						  	Email
+		  					<input type="text">
+						</label>
+
+
+					 	<label>
+						  	Direccion
+		  					<input type="text">
+						</label>
+					 	<label>
+						  	Codigo Postal
+		  					<input type="text">
+						</label>
+
+						
+					 	<label>
+						  	Número de Tarjeta
+		  					<input type="text">
+						</label>
+					 	<label>
+						  	Número de seguridad
+		  					<input type="text">
+						</label>
+						
+						<div class="date">
+							<span>Fecha de vencimiento</span>
+							<div class="select">
+								<label>
+						  	Mes
+						  	
+		  					<select>
+					          <option value="Ene">Ene</option>
+					          <option value="Feb">Feb</option>
+					          <option value="Mar">Mar</option>
+					          <option value="Abr">Abr</option>
+					          <option value="May">May</option>
+					          <option value="Jun">Jun</option>
+					          <option value="Jul">Jul</option>
+					          <option value="Ago">Ago</option>
+					          <option value="Sep">Sep</option>
+					          <option value="Oct">Oct</option>
+					          <option value="Nov">Nov</option>
+					          <option value="Dic">Dic</option>
+					        </select>
+						</label>
+					 	<label>
+						  	Año
+						  	
+		  					<select>
+					          <option value="2018">2018</option>
+					          <option value="2019">2019</option>
+					          <option value="2020">2020</option>
+					          <option value="2021">2021</option>
+					          <option value="2022">2022</option>
+					          <option value="2023">2023</option>
+					          <option value="2024">2024</option>
+					          <option value="2025">2025</option>
+					          <option value="2026">2026</option>
+					          <option value="2027">2027</option>
+					          <option value="2028">2028</option>
+					        </select>
+						</label>
+							</div>
+							
+						</div>
+					 	
+
+						<div class="botones ">
+
+							<button class="btn_iniciar">Hacer Pedido</button> 
+						</div>
+						
+					</form>
+				</div>
+
+            </content>
+
+
+{% endblock %}
+
+{% block js %} 
+    <script src="{% static 'js/buy.js' %}"></script>
+
+  {% endblock %}

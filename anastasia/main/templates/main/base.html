@@ -39,7 +39,7 @@
                       <a href="#"><img src="{% static 'assets/images/logo.jpg' %}"></a>
                     </li>
                     <li>
-                      <a href="{% url 'principal' %}">
+                      <a href="{% url 'principal' %}"><i class="fi-shopping-bag"></i>
                         {% if request.session.lang == "es" %}
                             Productos
                          {% else %}
@@ -48,15 +48,15 @@
                        </a>
                     </li>
                     <li>
-                      <a href="{% url 'carrito' %}"><i class="fi-shopping-cart">
+                      <a href="{% url 'carrito' %}"><i class="fi-shopping-cart"></i>
                         {% if request.session.lang == "es" %}
                             Carrito
                          {% else %}
                             Bag
-                         {% endif %}</i></a>
+                         {% endif %}</a>
                     </li>
                     <li>
-                      <a href="Nosotros.html">
+                      <a href="Nosotros.html"><i class="fi-torsos-female-male"></i>
                         {% if request.session.lang == "es" %}
                             Nosotros
                          {% else %}

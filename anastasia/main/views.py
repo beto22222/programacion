@@ -6,7 +6,7 @@ import json
 from django.views.generic import TemplateView
 import requests 
 
-
+ 
 
 class CarritoView(TemplateView):
     template_name='main/carrito.html'
@@ -32,7 +32,6 @@ class CarritoView(TemplateView):
             'end_cost':end_cost
         }
         return (context)
-
 
 class IndexView(TemplateView):
 
@@ -64,6 +63,24 @@ class ProductView(TemplateView):
 
         return {'product':product,'pines':list(range(len(product.images.all())))}
 
+class ProductView(TemplateView):
+    template_name='main/buy.html'
+    def get_context_data(self,*args,**kwargs):
+        check(self.request)
+        p=self.request.session.get('objects_oncar')
+
+        products=[]
+        end_cost=0
+
+        if len(p):
+            for i in p:
+                d=Product.objects.get(slug = i[0])
+                end_cost+=d.price*i[1]
+        context = {
+            'end_cost':end_cost
+        }
+        return (context)
+
 def add_to_car(request,slug):
     #print(request.session.session_key)
 
@@ -87,7 +104,6 @@ def add_to_car(request,slug):
     #print('----------------------------------')
 
     return(HttpResponseRedirect('/'))
-
 
 def quit_to_car(request,slug):
     
@@ -165,14 +181,12 @@ def switch_to_len(request):
     print(a)
     return(HttpResponseRedirect('/'))
 
-
 def instagram(request):
     template = loader.get_template('main/instagram.html')
     r = requests.get('https://snapwidget.com/embed/527909')
 
-
     
-    r=r.text.replace('width="100%"','')
+    r=r.text.replace('a href','a href="https://www.instagram.com/anastasiaecothique/" name')
     context = {'pag':r.replace('width="100%"','')}
 
     return HttpResponse(template.render(context, request))
