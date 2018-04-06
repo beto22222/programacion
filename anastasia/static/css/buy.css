@@ -25,6 +25,16 @@ content{
     background: #6D3A4B;
 }
 
+@media (max-width: 640px) {
+    .tab button {
+        width: 100%;
+
+        color: #6D3A4B;
+        background: #fff;
+        font-size: 18px;
+    }
+}
+
 
 /* Style the tab content */
 .tabcontent {
@@ -35,7 +45,10 @@ content{
 .botones button{
     width: 100%;
     margin: auto;
-    height: 40px;
+    
+    color: #fff;
+    background: #6D3A4B;
+    height: 40px; 
     color: #FFF;
 }
 .botones {
@@ -45,7 +58,6 @@ content{
     padding:20px 0px 20px 0px;
 }
 .btn_iniciar{
-    background: #6D3A4B;
 }
 form{
     font-size: 18px;
@@ -57,15 +69,15 @@ label{
 .row{
     justify-content: center;
 }
-.date .select{
+.mitad .select{
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
 }
-.date span{
+.mitad span{
     width: 100%;
 }
-.date label{
-    width: 40%;
+.mitad label{
+    width: 45%;
 }

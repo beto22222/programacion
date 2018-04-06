@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
+    'payments.apps.PaymentsConfig',
     'payu',
 
 ]
@@ -133,6 +134,9 @@ STATICFILES_DIRS = [
 
 SESSION_SAVE_EVERY_REQUEST=True
 
+
+
+CONEKTA_PRIVATE_KEY = "key_eYvWV7gSDkNYXsmr"
 
 '''
 PAYU_MERCHANT_KEY = "Your MerchantID",

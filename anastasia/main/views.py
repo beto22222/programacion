@@ -27,6 +27,7 @@ class CarritoView(TemplateView):
         print(end_cost)
         print('+++++++++++++++++Car++++++++++++++++++++')
         print(products)
+        set_end_cost(self.request,end_cost)
         context = {
             'products': products,
             'end_cost':end_cost
@@ -63,7 +64,7 @@ class ProductView(TemplateView):
 
         return {'product':product,'pines':list(range(len(product.images.all())))}
 
-class ProductView(TemplateView):
+class BuyView(TemplateView):
     template_name='main/buy.html'
     def get_context_data(self,*args,**kwargs):
         check(self.request)
@@ -79,6 +80,8 @@ class ProductView(TemplateView):
         context = {
             'end_cost':end_cost
         }
+
+        set_end_cost(request,end_cost)
         return (context)
 
 def add_to_car(request,slug):
@@ -125,6 +128,7 @@ def quit_to_car(request,slug):
         'end_cost':str(end_cost)
     }
 
+    set_end_cost(request,end_cost)
     return(HttpResponse(json.dumps(context),content_type='application/json'))
 
 def like(request,slug):
@@ -165,6 +169,8 @@ def set_new_value_to_car(request,slug):
     context = {
         'end_cost':str(end_cost)
     }
+
+    set_end_cost(request,end_cost)
     print('-------------------')
     print(json.dumps(context))
     print('-------------------')
@@ -197,3 +203,8 @@ def check(request):
 
     if request.session.get('lang')==None:
         request.session['lang']='es'
+
+def set_end_cost(request,end_cost):
+
+    request.session['end_cost']=str(end_cost)
+

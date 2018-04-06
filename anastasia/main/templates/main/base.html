@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#283339">
     <title>{% block titulo %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'icons/foundation-icons.css' %}" />
     <link rel="stylesheet" href="{% static 'css/foundation-flex.css' %}">
@@ -39,7 +40,7 @@
                       <a href="#"><img src="{% static 'assets/images/logo.jpg' %}"></a>
                     </li>
                     <li>
-                      <a href="{% url 'principal' %}"><i class="fi-shopping-bag"></i>
+                      <a href="{% url 'inicio' %}"><i class="fi-shopping-bag"></i>
                         {% if request.session.lang == "es" %}
                             Productos
                          {% else %}
@@ -91,7 +92,7 @@
                   <ul class="dropdown menu align-spaced show-for-medium" data-dropdown-menu>
                     
                     <li>
-                      <a href="{% url 'principal' %}">
+                      <a href="{% url 'inicio' %}">
                         {% if request.session.lang == "es" %}
                             Productos
                          {% else %}

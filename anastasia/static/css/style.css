@@ -125,7 +125,19 @@ header p{
 #principal{
 	justify-content: center;
 }
-#principal h2{
+.social{
+	text-align: center;
+	justify-content: center;
+}.social div{
+	display: flex;
+	align-items: center;
+}.social div *{
+	width: 30%;
+	color: #6D3A4B;
+}.social div hr{
+	border-bottom: 3px solid #6D3A4B;
+}
+h2{
 	font-size: 45px;
 	color: #6D3A4B;
 	margin-top: 80px;
@@ -143,7 +155,7 @@ header p{
     width: 100%;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 710px) {
    header h2{
     	font-size: 30px;
 	}
@@ -157,10 +169,13 @@ header p{
 
 		font-size: 35px;
 	}
-
-.instagram{
+	.social div hr{
 	visibility: hidden;
-}
+}	
+
+	.instagram{
+		visibility: hidden;
+	}
 
 }
 @media (max-width: 640px) {

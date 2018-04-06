@@ -1,10 +1,11 @@
  
 {% extends "main/base.html" %} 
-{% block titulo %}Log in{% endblock %}
+{% block titulo %}Pedido{% endblock %}
 {% block estilo %}
   
         {% load staticfiles %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/buy.css' %}">
+  <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js"></script>
 {% endblock %}
 {% block contenido %}
         {% load staticfiles %}
@@ -22,37 +23,48 @@
 				</div>
 
 				<div id="IniciarSession" class="tabcontent column medium-7 small-12">
-					<form>
-					 	<label>
-						  	Nombre
-		  					<input type="text">
-						</label>
-					 	<label>
-						  	Email
-		  					<input type="text">
-						</label>
 
 
-					 	<label>
-						  	Direccion
-		  					<input type="text">
-						</label>
-					 	<label>
-						  	Codigo Postal
-		  					<input type="text">
-						</label>
+					<form action="" method="POST" id="card-form">
+						
+        {% csrf_token %}
+					  <span class="card-errors"></span>
+					  <div>
+					    <label>
+					      <span>Cardholder name</span>
+					      <input size="20" data-conekta="card[name]" type="text">
+					    </label>
+					  </div>
+					  <div>
+					    <label>
+					      <span>Card number</span>
+					      <input size="20" data-conekta="card[number]" type="text">
+					    </label>
+					  </div>
+					  <div>
+					    <label>
+					      <span>CVC</span>
+					      <input size="4" data-conekta="card[cvc]" type="text">
+					    </label>
+					  </div>
+					  <div>
+					    <label>
+					      <span>Expiration date (MM/YYYY)</span>
+					      <input size="2" data-conekta="card[exp_month]" type="text">
+					    </label>
+					    <span>/</span>
+					    <input size="4" data-conekta="card[exp_year]" type="text">
+					  </div>
+					  <button type="submit">Create token</button>
+					</form>
+
+
+
+
+
 
 						
-					 	<label>
-						  	Número de Tarjeta
-		  					<input type="text">
-						</label>
-					 	<label>
-						  	Número de seguridad
-		  					<input type="text">
-						</label>
-						
-						<div class="date">
+						<div class="mitad">
 							<span>Fecha de vencimiento</span>
 							<div class="select">
 								<label>
@@ -90,18 +102,12 @@
 					          <option value="2028">2028</option>
 					        </select>
 						</label>
-							</div>
-							
-						</div>
-					 	
-
-						<div class="botones ">
-
-							<button class="btn_iniciar">Hacer Pedido</button> 
-						</div>
 						
-					</form>
 				</div>
+
+
+
+
 
             </content>
 
@@ -110,5 +116,37 @@
 
 {% block js %} 
     <script src="{% static 'js/buy.js' %}"></script>
+
+
+
+    <script type="text/javascript">
+      Conekta.setLanguage("es"); 
+	  Conekta.setPublicKey('key_KJysdbf6PotS2ut2');
+
+	  var conektaSuccessResponseHandler = function(token) {
+	    var $form = $("#card-form");
+	    //Add the token_id in the form
+	     $form.append($('<input name="conektaTokenId" id="conektaTokenId" type="hidden">').val(token.id));
+	    $form.get(0).submit(); //Submit
+	  };
+	  var conektaErrorResponseHandler = function(response) {
+	    var $form = $("#card-form");
+	    $form.find(".card-errors").text(response.message_to_purchaser);
+	    $form.find("button").prop("disabled", false);
+	  };
+
+	  //jQuery generate the token on submit.
+	  $(function () {
+	    $("#card-form").submit(function(event) {
+	      var $form = $(this);
+	      // Prevents double clic
+	      $form.find("button").prop("disabled", true);
+	      console.log('---------------------LEGO---------------')
+	      //----------------COM---------------------
+	      //Conekta.Token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler);
+	      return false;
+	    });
+	  });
+	</script>
 
   {% endblock %}
