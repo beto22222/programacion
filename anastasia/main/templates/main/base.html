@@ -13,10 +13,10 @@
     <link rel="stylesheet"  type="text/css" href="{% static 'css/app.css' %}">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    {% block estilo %}{% endblock %}
     
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
      <link href="https://fonts.googleapis.com/css?family=Comfortaa|Patua+One" rel="stylesheet"> 
+    {% block estilo %}{% endblock %}
   </head>
   <body>
 
@@ -40,7 +40,7 @@
                       <a href="#"><img src="{% static 'assets/images/logo.jpg' %}"></a>
                     </li>
                     <li>
-                      <a href="{% url 'inicio' %}"><i class="fi-shopping-bag"></i>
+                      <a href="{% url 'home' %}"><i class="fi-shopping-bag"></i>
                         {% if request.session.lang == "es" %}
                             Productos
                          {% else %}
@@ -92,7 +92,7 @@
                   <ul class="dropdown menu align-spaced show-for-medium" data-dropdown-menu>
                     
                     <li>
-                      <a href="{% url 'inicio' %}">
+                      <a href="{% url 'home' %}">
                         {% if request.session.lang == "es" %}
                             Productos
                          {% else %}
@@ -102,11 +102,21 @@
                       </a>
                     </li>
                     <li>
-                      <a href="Nosotros.html">
+                      <a href="{% url 'inspiring_spotlight' %}">
                         {% if request.session.lang == "es" %}
-                            Nosotros
+                             Inspiracion 
                          {% else %}
-                            About us
+                             Inspiring Spotlight 
+                         {% endif %}
+
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'contact_us' %}">
+                        {% if request.session.lang == "es" %}
+                             Contactanos
+                         {% else %}
+                             Contact Us 
                          {% endif %}
 
                       </a>

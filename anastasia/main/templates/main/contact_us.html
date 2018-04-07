@@ -1,0 +1,50 @@
+
+{% extends "main/base.html" %} 
+{% block titulo %}Inspiracion{% endblock %}
+{% block estilo %}
+  
+        {% load staticfiles %}
+  		<link rel="stylesheet" type="text/css" href="{% static 'css/contact_us.css' %}">
+{% endblock %}
+{% block contenido %}
+        {% load staticfiles %}
+
+        <content class="row align-justify">
+
+        	<h1 class="colum medium-12 titulo">
+        	Contactanos
+        	</h1>
+        	<div class="text_cont colum small-12 medium-5">
+	        	<form>
+	        		<label>
+	        			Nombre:
+	        			<input type="text" name="name">
+	        		</label>
+	        		<label>
+	        			Email:
+	        			<input type="text" name="email">
+	        		</label>
+	        		<label>
+	        			<textarea rows="4" cols="50" name="comment">
+							
+						</textarea>
+	        		</label>
+	        		<label>
+	        			<button type="submit">Enviar</button>
+	        		</label>
+	        	</form>
+	        	
+        	</div>
+        	<div  class="colum small-12 medium-6 map">
+        		<img src="https://i.stack.imgur.com/dApg7.png" >
+
+        	</div>
+        	
+        </content>
+
+
+{% endblock %}
+
+{% block js %} 
+
+{% endblock %}

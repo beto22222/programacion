@@ -1,6 +1,11 @@
 body{
 	margin: 0px;
 }
+body *{
+	
+	font-family: 'Patua One', cursive;
+    font-family: 'Comfortaa', cursive;
+}
 .menu{
 	width: auto;
 }

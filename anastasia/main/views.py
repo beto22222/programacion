@@ -64,6 +64,13 @@ class ProductView(TemplateView):
 
         return {'product':product,'pines':list(range(len(product.images.all())))}
 
+class InspiringSpotlightView(TemplateView):
+    template_name='main/inspiring_spotlight.html'
+    
+class ContactUsView(TemplateView):
+    template_name='main/contact_us.html'
+    
+
 class BuyView(TemplateView):
     template_name='main/buy.html'
     def get_context_data(self,*args,**kwargs):

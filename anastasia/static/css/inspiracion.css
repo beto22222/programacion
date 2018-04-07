@@ -1,0 +1,38 @@
+h1{
+	color:#6D3A4B;
+
+	font-size: 35px;
+	padding-bottom: 5px;
+	height: 60px;
+}
+
+
+@media (max-width: 1000px) {
+    #sticky a img{
+		width: 100px;
+		margin-top: 40px;
+		margin-left:10px;
+	}
+}
+h3{
+	color:#6D3A4B;
+
+	font-size: 20px;
+}
+ul{
+	color:#6D3A4B;
+
+	font-size: 20px;
+}
+
+p{
+	text-align: justify;
+	font-size: 17px;
+	color: #7e8185;
+}
+.titulo{
+	margin-top: 98px;
+}
+content{
+	margin-bottom:20px; 
+}

@@ -1,7 +1,5 @@
 body{
 	margin:0px;
-    font-family: 'Patua One', cursive;
-    font-family: 'Comfortaa', cursive;
 
 }
 header{
@@ -169,9 +167,13 @@ h2{
 
 		font-size: 35px;
 	}
-	.social div hr{
-	visibility: hidden;
-}	
+	.social div{
+		visibility: hidden;
+		height: 0px;
+	}
+	.social {
+		visibility: hidden;
+	}	
 
 	.instagram{
 		visibility: hidden;

@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 
 from main.views import ProductView
 from main.views import CarritoView
+from main.views import InspiringSpotlightView
+from main.views import ContactUsView
 from payments.views import BuyView
 from main.views import IndexView
 import main
@@ -13,7 +15,7 @@ import payments
 
  
 urlpatterns = [
-    path('',IndexView.as_view(),name='inicio'),
+    path('',IndexView.as_view(),name='home'),
     path('admin/', admin.site.urls),
     path('carrito/', CarritoView.as_view(),name='carrito'),
     path('bolsas/<str:sku>/', ProductView.as_view(),name='producto'),
@@ -24,6 +26,8 @@ urlpatterns = [
     path('quit_to_car/<str:slug>/', main.views.quit_to_car,name='quit_to_car'),
     path('like/<str:slug>/', main.views.like,name='like'),
     path('comprar/',  payments.views.pay,name='comprar'),
+    path('inspiring_spotlight/',  InspiringSpotlightView.as_view(),name='inspiring_spotlight'),
+    path('contact_us/', ContactUsView.as_view(),name='contact_us'),
    # path('comprar/success', payment.views.payment_success, name="payment_success"),
     #path('comprar/failure', payment.views.payment_failure, name="payment_failure"),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

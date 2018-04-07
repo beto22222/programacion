@@ -1,0 +1,45 @@
+h1{
+	color:#6D3A4B;
+
+	font-size: 40px;
+	height: 60px;
+	text-align: center;
+	padding-top: 50px;
+	margin-bottom: 90px;
+}
+label{
+	font-size: 17px;
+}
+form button{
+	color: #fff;
+	background: #6D3A4B;
+	padding: 10px;
+}
+textarea{
+
+	text-align: justify;
+}
+content{
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom:20px; 
+}
+.map{
+
+	margin-top: 30px;
+}
+
+@media (max-width: 1000px) {
+    #sticky a img{
+		width: 100px;
+		margin-top: 40px;
+		margin-left:10px;
+	}
+}@media (max-width: 630px) {
+	.map img{
+
+		width: 100%;
+	}
+}
+
+    
