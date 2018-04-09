@@ -14,9 +14,9 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     
+    {% block estilo %}{% endblock %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
      <link href="https://fonts.googleapis.com/css?family=Comfortaa|Patua+One" rel="stylesheet"> 
-    {% block estilo %}{% endblock %}
   </head>
   <body>
 
@@ -49,21 +49,32 @@
                        </a>
                     </li>
                     <li>
+                      <a href="{% url 'inspiring_spotlight' %}">
+                        {% if request.session.lang == "es" %}
+                             Inspiracion 
+                         {% else %}
+                             Inspiring Spotlight 
+                         {% endif %}
+
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'contact_us' %}">
+                        {% if request.session.lang == "es" %}
+                             Contactanos
+                         {% else %}
+                             Contact Us 
+                         {% endif %}
+
+                      </a>
+                    </li>
+                    <li>
                       <a href="{% url 'carrito' %}"><i class="fi-shopping-cart"></i>
                         {% if request.session.lang == "es" %}
                             Carrito
                          {% else %}
                             Bag
                          {% endif %}</a>
-                    </li>
-                    <li>
-                      <a href="Nosotros.html"><i class="fi-torsos-female-male"></i>
-                        {% if request.session.lang == "es" %}
-                            Nosotros
-                         {% else %}
-                            About us
-                         {% endif %}
-                      </a>
                     </li>
                   </ul>
             </nav>

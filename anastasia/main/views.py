@@ -33,7 +33,7 @@ class CarritoView(TemplateView):
             'end_cost':end_cost
         }
         return (context)
-
+ 
 class IndexView(TemplateView):
 
     template_name='main/index.html'
