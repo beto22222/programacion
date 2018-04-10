@@ -4,9 +4,7 @@ body{
 	padding: 0px;
 }
 body *{
-	
-	font-family: 'Patua One', cursive;
-    font-family: 'Comfortaa', cursive;
+	font-family: 'IBM Plex Sans Condensed', sans-serif;
 }
 .menu{
 	width: auto;
