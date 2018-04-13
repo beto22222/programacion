@@ -76,6 +76,10 @@ content{
 	margin-bottom: 100px;
 	width: 100%;
 }
+.ban2 img{
+	width: 100%;
+
+	}
 @media (max-width: 940px) {
 	    
 	.aliados_slide {
