@@ -8,12 +8,7 @@ h1{
 .texto_cool{
 	font-size: 35px;
 	text-align: right;
-}
-.texto_cool p{
-	color: #000;
-	margin-bottom: -30px;
-	font-size: 50px;
-	text-align: center;
+	font-style: italic;
 }
 @media (max-width: 1000px) {
     #sticky a img{
