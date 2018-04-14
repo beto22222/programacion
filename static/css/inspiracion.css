@@ -3,7 +3,6 @@ h1{
 
 	font-size: 35px;
 	padding-bottom: 5px;
-	margin-top: 0px;
 }
 
 .texto_cool{
@@ -45,7 +44,7 @@ p{
 	color: #7e8185;
 }
 .titulo{
-	margin-top: 98px;
+	margin-top: 0px;
 }
 content{
 	margin-bottom:20px; 
