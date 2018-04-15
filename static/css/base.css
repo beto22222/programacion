@@ -1,6 +1,6 @@
 body{
 	margin: 0px;
-	min-height:100%; 
+	min-height:100%;  
 	padding: 0px;
 }
 body *{
@@ -91,4 +91,11 @@ footer{
 	margin-top: 47px;
 	background-color: #283339;
 	height: 20px;
+}nav{
+}
+.off-canvas.position-left {
+    height: auto;
+}
+.off-canvas-wrapper{
+	background: #283339;
 }

@@ -1,4 +1,4 @@
-{% load staticfiles %}  
+{% load staticfiles %}   
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
   <head>
@@ -168,6 +168,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script src="{% static 'js/app.js' %}"></script>
     <script src="{% static 'js/base.js' %}"></script>
+
   </body>
 </html>
 
@@ -191,5 +192,11 @@ $(".btn_len").click(function(e) {
             console.log('error');
         }
     });
+});
+
+$(".align-spaced").click(function(e){
+  let a=$(window).scrollTop() + "px";
+  console.log(a)
+  document.getElementById("offCanvas").style.marginTop = a;
 });
 </script>

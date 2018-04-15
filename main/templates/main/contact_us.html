@@ -5,10 +5,18 @@
   
         {% load staticfiles %}
   		<link rel="stylesheet" type="text/css" href="{% static 'css/contact_us.css' %}">
-{% endblock %}
+{% endblock %} 
 {% block contenido %}
         {% load staticfiles %}
 
+	        <div  class="ban2" >
+	        	{% if request.session.lang == "es" %}
+                              
+	        		<img  src="{% static 'img/Contactanos-banner-español.png' %}"/>
+                {% else %}
+                    <img  src="{% static 'img/Contact-banner.png' %}"/>
+                {% endif %}
+	    	</div>
         <content class="row align-justify">
 
 	        <h2>
