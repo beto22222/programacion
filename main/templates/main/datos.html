@@ -1,0 +1,90 @@
+ 
+{% extends "main/base.html" %} 
+{% block titulo %}Datos de envio{% endblock %}
+{% block estilo %}
+  
+        {% load staticfiles %}
+        
+  <link rel="stylesheet" type="text/css" href="{% static 'css/datos.css' %}">
+
+{% endblock %}
+{% block contenido %}
+        {% load staticfiles %}
+
+
+            <content class="row">
+            	<div class="column small-12 medium-7 tabla-de-datos">
+            		 <table>
+		                <tr>
+		                  <td>Productos</td>
+		                  <td>
+		                  	{% for p in products %}
+
+		                  		<span class="valor">{{p.1}}</span>
+		                  		<span>{{p.0}}</span>
+		                  		</br>
+		                  	{% endfor %}
+		                  </td>
+		                </tr>
+		                <tr>
+		                  <td>Costo</td>
+		                  <td>{{end_cost}}</td>
+		                </tr>
+		            </table>
+            	</div>
+				
+				<form id="form" action="." method="post" class="column small-12 medium-7">
+
+        			{% csrf_token %}
+				  <div>
+				    <label>
+				      <span>Nombre</span>
+				      <input name="nam" id="name" type="text" value="" required />
+				    </label>
+				  </div>
+				  
+				  <div class="pyz">
+				    <label>
+				      <span>Pais</span>
+				       <select name="con" id="contry" value="" required>
+						  <option value="colombia">Colombia</option>
+						  <option value="usa">Usa</option>
+						</select> 
+				    </label>
+
+				    <label>
+				      <span>Zip</span>
+				      <input name="zip" id="zip" type="text" value="" required />
+				    </label>
+				  </div>
+				  <div>
+				    <label>
+				      <span>Calle y no</span>
+				      <input name="str" id="street" type="text" value="" required />
+				    </label>
+				  </div>
+				  <div>
+				    <label>
+				      <span>Email</span>
+				      <input name="ema" id="email" type="text" value="" required />
+				    </label>
+				  </div>
+				  <div>
+				    <label>
+				      <span>Numero</span>
+				      <input name="num" id="num" type="text" value="" required />
+				    </label>
+				  </div>
+
+				  <input type="submit" value="Enviar datos" class="btn_enviar" />
+				</form>
+
+
+            </content>
+
+
+{% endblock %}
+
+{% block js %} 
+
+  {% endblock %}

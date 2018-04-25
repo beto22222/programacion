@@ -38,8 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
-    'payments.apps.PaymentsConfig',
-    'payu',
 
 ]
 
@@ -136,13 +134,3 @@ SESSION_SAVE_EVERY_REQUEST=True
 
 
 
-CONEKTA_PRIVATE_KEY = "key_eYvWV7gSDkNYXsmr"
-
-'''
-PAYU_MERCHANT_KEY = "Your MerchantID",
-
-PAYU_MERCHANT_SALT = "Your MerchantSALT",
-
-# And add the PAYU_MODE to 'TEST' for testing and 'LIVE' for production.
-PAYU_MODE = "TEST"
-'''

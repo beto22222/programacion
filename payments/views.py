@@ -1,5 +1,5 @@
 from django.template import loader
-from django.http import HttpResponse,Http404,HttpResponseRedirect
+from django.http import HttpResponse,Http404,HttpResponseRedirect,HttpResponsePermanentRedirect
 from django.shortcuts import render,redirect
 import json
 from django.views.generic import TemplateView
@@ -7,67 +7,78 @@ import requests
 from django.views.decorators.csrf import csrf_protect
 from main.models import Product
 
+import twocheckout
+from twocheckout import TwocheckoutError
 
-from payments.models import Sale
+
+  
 
 
-class BuyView(TemplateView):
-    template_name='main/buy.html'
+@csrf_protect
+def datos_de_compra(request):
+    if request.method == 'GET':
+        context = {
+            'end_cost':request.session.get('end_cost'),
+            'products':request.session.get('objects_oncar')
+        }
+        return render(request, 'main/datos.html',context)
+    else:
+        request.session['usrData']={
+          "name":request.POST["nam"],
+          "email":request.POST["ema"],
+          "street":request.POST["str"],
+          "zip":request.POST["zip"],
+          "country":request.POST["con"],
+        }
 
-    def get_context_data(self,*args,**kwargs):
-
-        end_cost=10
-
-        p=self.request.session.get('objects_oncar')
-        descriptions=" "
-        if len(p):
-	        for i in p:
-	            descriptions=Product.objects.get(slug = i[0]).description_en
-
-        print(descriptions)
-
-        data = {}
-        txnid = get_transaction_id()
-        hash_ = generate_hash(self.request, txnid)
-        hash_string = get_hash_string(self.request, txnid)
-        # use constants file to store constant values.
-        # use test URL for testing
-        data["action"] = constants.PAYMENT_URL_LIVE 
-        data["amount"] = float(constants.PAID_FEE_AMOUNT)
-        data["productinfo"]  = constants.PAID_FEE_PRODUCT_INFO
-        data["key"] = constants.KEY
-        data["txnid"] = txnid
-        data["hash"] = hash_
-        data["hash_string"] = hash_string
-        '''
-        data["firstname"] = "Alberto"
-        data["email"] = "albeam12350@hola.com"
-        data["phone"] = "5513584608"
-        '''
-        data["service_provider"] = constants.SERVICE_PROVIDER
-        data["furl"] = self.request.build_absolute_uri(reverse("carrito"))
-        data["surl"] = self.request.build_absolute_uri(reverse("inicio"))
-
-        return (data)
-
-def payment_success(request):
-	h=0
-def payment_failure(request):
-	h=0
-
-      
+        return HttpResponseRedirect("/comprar/")
+    
 
 @csrf_protect
 def pay(request):
+    datos=request.session.get('usrData')
     if request.method == 'GET':
-        return render(request, 'main/buy.html')
+        context = {
+            'end_cost':request.session.get('end_cost'),
+            'datos':datos,
+            'products':request.session.get('objects_oncar')
+        }
+        print(request.session.get('usrData'))
+
+        return render(request, 'main/buy.html',context)
     else:
-        token_id = request.POST["conektaTokenId"]
-        sale = Sale()
-        if token_id: #Prevents send empty token
-            return HttpResponse(sale.charge())
-
-
-
-
+        token_id = request.POST["token"]
+        print("---------------DATOS-----------------")
+        print(request.POST)
+        print("--------------------------------")
+        
+        twocheckout.Api.auth_credentials({
+            'private_key': '8C6C43F8-0B76-4BE8-B292-C5F7913B42AF',
+            'seller_id': '901378287',
+            'mode': 'sandbox'  #Uncomment to use Sandbox
+        })
+        params = {
+          'merchantOrderId': '123',
+          'token': token_id,
+          'currency': 'USD',
+          'total': request.session.get('end_cost'),
+          'billingAddr': {
+              'name': datos['name'],
+              'addrLine1': datos['street'],
+              'city': 'Columbus',
+              'state': 'OH',
+              'zipCode': '43123',
+              'country': datos['country'],
+              'email': datos['email'],
+              'phoneNumber': '555-555-5555'
+          }
+        }
+        try:
+            result = twocheckout.Charge.authorize(params)
+            print (result.responseCode)
+            
+            return render(request, 'main/exito.html')
+        except TwocheckoutError as error:
+            print (error.msg)
+            return HttpResponse("error")
 

@@ -20,29 +20,18 @@ label{
 .row{
     justify-content: center;
 }
-.card-data{
+.pyz{
     display: flex;
+    justify-content: space-between;
 }
-.card-data label:nth-child(1){
-    width: 70%;
-}
-.card-data label:nth-child(2){
-    width: 30%;
-}
-.card-data input{
-    width: 99%;
-}
-.date-data{
-    display: flex;
-}
-.date-data select:nth-child(1){
+.pyz label:nth-child(1){
     width: 50%;
 }
-.date-data select:nth-child(2){
+.pyz label:nth-child(2){
     width: 50%;
 }
-.date-data select{
-    margin-right: 1%;
+.pyz input{
+    width: 98%;
 }
 .btn_enviar{
     color: #fff;

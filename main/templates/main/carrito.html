@@ -1,4 +1,4 @@
- 
+  
 {% extends "main/base.html" %} 
 {% block titulo %}Carrito{% endblock %}
 {% block estilo %}
@@ -10,7 +10,7 @@
         {% load staticfiles %}
 
 
-
+ 
 
 
  
@@ -48,16 +48,33 @@
                   <td></td>
                   <td></td>
                   <td id="end_cost">{{ end_cost }}</td>
-                  <td><button class="pay">
+                  <td>
+
+                    <a href="{% url 'datos_de_compra' %}">
+                      <button class="pay show-for-medium">
                           {% if request.session.lang == "es" %}
                             
                             Comprar
                          {% else %}
                             Buy
                          {% endif %}
-                       </button></td>
+                       </button>
+                    </a>
+
+                  </td>
                 </tr>
+                
               </table> 
+              <a href="{% url 'datos_de_compra' %}">
+                <button class="pay hide-for-medium btn-large" >
+                            {% if request.session.lang == "es" %}
+                              
+                              Comprar
+                           {% else %}
+                              Buy
+                           {% endif %}
+                </button>
+              </a>
             </content>
 
 

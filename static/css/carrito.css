@@ -33,14 +33,19 @@ content{
 	padding: 10px;
 	width: 100%;
 }
+.btn-large{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 @media (max-width: 640px) {
 	table img{
 		visibility: hidden;
 	}
 	.cantidad > input{
-		width: 60%;
+		width: 100%;
 		align-content: center;
-		margin-left: 15%;
+		margin-left: 0px;
 	}
 }

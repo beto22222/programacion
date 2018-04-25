@@ -5,7 +5,7 @@ from .models import Product
 import json
 from django.views.generic import TemplateView
 import requests 
-
+import smtplib
  
 
 class CarritoView(TemplateView):
@@ -16,17 +16,12 @@ class CarritoView(TemplateView):
 
         products=[]
         end_cost=0
-
-        print('--------------------AQUI--------------------')
         if len(p):
             for i in p:
                 d=Product.objects.get(slug = i[0])
                 end_cost+=d.price*i[1]
                 d.qty=i[1]
                 products.append(d)
-        print(end_cost)
-        print('+++++++++++++++++Car++++++++++++++++++++')
-        print(products)
         set_end_cost(self.request,end_cost)
         context = {
             'products': products,
@@ -43,14 +38,6 @@ class IndexView(TemplateView):
         context = {
             'best_products': best_products,
         }
-        x_forwarded_for = self.request.META.get('HTTP_X_FORWARDED_FOR')
-        if x_forwarded_for:
-            ip = x_forwarded_for.split(',')[0]
-        else:
-            ip = self.request.META.get('REMOTE_ADDR')
-        print('---------------------------')
-        print(ip)
-        print('---------------------------')
         return (context)
 
 class ProductView(TemplateView):
@@ -65,11 +52,12 @@ class ProductView(TemplateView):
         return {'product':product,'pines':list(range(len(product.images.all())))}
 
 class InspiringSpotlightView(TemplateView):
+
     template_name='main/inspiring_spotlight.html'
     
 class ContactUsView(TemplateView):
+
     template_name='main/contact_us.html'
-    
 
 class BuyView(TemplateView):
     template_name='main/buy.html'
@@ -92,10 +80,6 @@ class BuyView(TemplateView):
         return (context)
 
 def add_to_car(request,slug):
-    #print(request.session.session_key)
-
-    #print('*********************LLEGO********************************')
-    #print(request.session.session_key)
     #request.session.flush()
     if request.session.get('objects_oncar')==None:
         request.session['objects_oncar']=[]
@@ -107,12 +91,6 @@ def add_to_car(request,slug):
         data.append([slug,1])
     request.session['objects_oncar']=data
 
-    print('data')
-    print(data)
-
-    #print(request.session.get('objects_oncar'))
-    #print('----------------------------------')
-
     return(HttpResponseRedirect('/'))
 
 def quit_to_car(request,slug):
@@ -122,11 +100,9 @@ def quit_to_car(request,slug):
     if True in clasif:
         del data[clasif.index(True)]
     request.session['objects_oncar']=data
-
     
     end_cost=0
 
-    print('--------------------AQUI--------------------')
     if len(data):
         for i in data:
             d=Product.objects.get(slug = i[0])
@@ -146,9 +122,6 @@ def like(request,slug):
     context = {
         'punctuation':str(obj.punctuation),
     }
-    print('-------------------')
-    print(json.dumps(context))
-    print('-------------------')
     return(HttpResponse(json.dumps(context),content_type='application/json'))
 
 def set_new_value_to_car(request,slug):
@@ -157,7 +130,7 @@ def set_new_value_to_car(request,slug):
         request.session['objects_oncar']=[]
     data=request.session.get('objects_oncar')
     clasif=list(map(lambda x: slug in x,data))
-    print(clasif)
+
     if True in clasif:
         if int(request.GET['value'])>0:        
             data[clasif.index(True)][1]=int(request.GET['value'])
@@ -168,7 +141,6 @@ def set_new_value_to_car(request,slug):
 
     end_cost=0
 
-    print('--------------------AQUI--------------------')
     if len(p):
         for i in p:
             d=Product.objects.get(slug = i[0])
@@ -178,9 +150,6 @@ def set_new_value_to_car(request,slug):
     }
 
     set_end_cost(request,end_cost)
-    print('-------------------')
-    print(json.dumps(context))
-    print('-------------------')
     return(HttpResponse(json.dumps(context),content_type='application/json'))
 
 def switch_to_len(request):
@@ -188,10 +157,7 @@ def switch_to_len(request):
         request.session['lang'] = 'en'
     else:
         request.session['lang'] = 'es'
-    print('--------------LEN-------------------')
-    print(request.session.get('lang'))
     a=request.GET['i']
-    print(a)
     return(HttpResponseRedirect('/'))
 
 def instagram(request):
@@ -214,4 +180,40 @@ def check(request):
 def set_end_cost(request,end_cost):
 
     request.session['end_cost']=str(end_cost)
+
+
+
+def send_email(request):
+
+    print("----------------------------------------------")
+    
+    msg = request.GET.get('name') + " > " + request.GET.get('email') + " dice: " + request.GET.get('content')
+    print(msg)
+    print("mensaje enviado")
+    fromaddr = 'alberto.moca12350@gmail.com'
+    toaddrs  = 'Mercadeo.anastasia@gmail.com'
+     
+    # Datos
+    username = 'alberto.moca12350@gmail.com'
+    password = 'elhijodelinternet'
+     
+    # Enviando el correo
+    server = smtplib.SMTP('smtp.gmail.com:587')
+    server.starttls()
+    server.login(username,password)
+
+    BODY = '\r\n'.join(['To: %s' % toaddrs,
+                    'From: %s' % fromaddr,
+                    'Subject: %s' % "SUBJECT",
+                    '', msg])
+    try:
+        server.sendmail(fromaddr, toaddrs, BODY)
+
+        print ('email sent')
+    except:
+        print ('error sending mail')
+    server.quit()
+
+    return(HttpResponseRedirect('/'))
+
 

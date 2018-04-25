@@ -1,0 +1,26 @@
+ 
+{% extends "main/base.html" %} 
+{% block titulo %}Pago exitoso{% endblock %}
+{% block estilo %}
+  
+        {% load staticfiles %}
+        
+  <link rel="stylesheet" type="text/css" href="{% static 'css/exito.css' %}">
+
+{% endblock %}
+{% block contenido %}
+        {% load staticfiles %}
+
+
+            <content class="row">
+				
+            	<h1>La compra a sido exitoso</h1>
+            	<h2>Gracias por elegirnos</h2>
+            </content>
+
+
+{% endblock %}
+
+{% block js %} 
+
+  {% endblock %}

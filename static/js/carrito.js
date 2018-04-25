@@ -1,6 +1,6 @@
 $(".qty").change(function(e) {
  
-
+ 
     let id=this.parentElement.parentElement.id;
 
     let base="/set_new_value_to_car/";

@@ -8,10 +8,9 @@ from main.views import ProductView
 from main.views import CarritoView
 from main.views import InspiringSpotlightView
 from main.views import ContactUsView
-from payments.views import BuyView
 from main.views import IndexView
 import main
-import payments
+import payments.views
 
  
 urlpatterns = [
@@ -25,9 +24,11 @@ urlpatterns = [
     path('set_new_value_to_car/<str:slug>/', main.views.set_new_value_to_car,name='set_new_value_to_car'),
     path('quit_to_car/<str:slug>/', main.views.quit_to_car,name='quit_to_car'),
     path('like/<str:slug>/', main.views.like,name='like'),
-    path('comprar/',  payments.views.pay,name='comprar'),
+    path('comprar/',  payments.views.pay , name='comprar'),
+    path('datos_de_envio/',  payments.views.datos_de_compra , name='datos_de_compra'),
     path('inspiring_spotlight/',  InspiringSpotlightView.as_view(),name='inspiring_spotlight'),
     path('contact_us/', ContactUsView.as_view(),name='contact_us'),
+    path('send_email/', main.views.send_email,name='send_email'),
    # path('comprar/success', payment.views.payment_success, name="payment_success"),
     #path('comprar/failure', payment.views.payment_failure, name="payment_failure"),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
