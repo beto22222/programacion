@@ -153,7 +153,22 @@
 
 
 
+            <div class="emailing" id="emailing">
+              <div class="input-group text_suscribe">
+                <p>Suscribete a nuestro newsletter</p>
+                <div class="input-group-button">
+                  <button><i class="fi-x"></i></button>
+                </div>
+              </div>
+              <div class="input-group email_data">
+                <span class="input-group-label"><i class="fi-mail"></i></span>
+                <input class="input-group-field" type="text" name="email">
+                <div class="input-group-button">
+                  <input type="submit" class="button" value="Suscribirse">
+                </div>
+              </div>
 
+            </div>
 
 
             
@@ -199,4 +214,23 @@ $(".align-spaced").click(function(e){
   console.log(a)
   document.getElementById("offCanvas").style.marginTop = a;
 });
+
+
+
+$(window).scroll(function(){
+    let div=document.getElementById("emailing");
+    let html_size=$( document ).height();
+    let windows_size=$( window ).height();
+    mT=-html_size + $(this).scrollTop()+ windows_size - 130;
+    console.log("--------------");
+    console.log( -html_size + $(this).scrollTop());
+    div.style.marginTop = mT+"px";
+/*
+    var aTop = $('.ad').height();
+    if($(this).scrollTop()>=aTop){
+        alert('header just passed.');
+        // instead of alert you can use to show your ad
+        // something like $('#footAd').slideup();
+    }*/
+  });
 </script>

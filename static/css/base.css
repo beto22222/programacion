@@ -61,15 +61,6 @@ body *{
 #mm li{
 	border-bottom: 1px #fff solid;
 }
-@media (max-width: 640px) {
-    .len{
-    	margin-left: 75%;
-    }
-	#sticky a img{
-		visibility: hidden;
-		height: 0px;
-	}
-}
 
 
 
@@ -98,4 +89,72 @@ footer{
 }
 .off-canvas-wrapper{
 	background: #283339;
+}
+.emailing{
+	color: #fff;
+	background:rgba(109, 58, 75,.9);
+	position: absolute;
+	width: 40%;
+	margin-left: 55%;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.emailing p{
+	width: 80%;
+	padding-top: 10px;
+	margin-bottom: 0px;
+	font-size: 20px;
+}
+
+.emailing .input-group{
+	width: 90%;
+	margin-left: 5%;
+}
+.emailing button i{
+	
+	font-size: 25px;
+}
+.emailing .text_suscribe .input-group-button{
+	margin-left:20%;
+	padding-top: 10px;
+}
+.emailing .email_data .button{
+	background-color: #283339;
+	font-size: 17px;
+}
+.emailing .email_data i{
+	color: #283339;
+	font-size: 25px;
+}
+.emailing .email_data .input-group-label{
+	background-color: #fff;
+}
+.emailing .text_suscribe i{
+	color: #f33;
+}
+
+@media (max-width: 990px) {
+    
+	.emailing{
+		width: 60%;
+		margin-left: 35%;
+	}
+
+}
+
+@media (max-width: 640px) {
+    .len{
+    	margin-left: 75%;
+    }
+	#sticky a img{
+		visibility: hidden;
+		height: 0px;
+	}
+	.emailing{
+		width: 100%;
+		margin-left: 0%;
+
+		border-radius: 0px;
+	}
 }
