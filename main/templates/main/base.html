@@ -156,9 +156,17 @@
 
             <div class="emailing" id="emailing">
               <div class="input-group text_suscribe">
-                <p>Suscribete a nuestro newsletter</p>
+                <p>
+                  {% if request.session.lang == "es" %}
+                             Suscribete a nuestro newsletter
+                         {% else %}
+                             Follow our newsletter
+                         {% endif %}
+
+
+                </p>
                 <div class="input-group-button">
-                  <button><i class="fi-x"></i></button>
+                  <button class="close_emaling"><i class="fi-x"></i></button>
                 </div>
               </div>
               <div class="input-group email_data">
@@ -190,8 +198,6 @@
 
 {% block js %}{% endblock %}
 <script type="text/javascript">
-  
-  
 $(".btn_len").click(function(e) {
     console.log(window.location.pathname);
     e.preventDefault();
@@ -210,21 +216,4 @@ $(".btn_len").click(function(e) {
     });
 });
 
-$(".align-spaced").click(function(e){
-  let a=$(window).scrollTop() + "px";
-  console.log(a)
-  document.getElementById("offCanvas").style.marginTop = a;
-});
-
-
-
-$(window).scroll(function(){
-    let div=document.getElementById("emailing");
-    let html_size=$( document ).height();
-    let windows_size=$( window ).height();
-    mT=-html_size + $(this).scrollTop()+ windows_size - 130;
-    console.log("--------------");
-    console.log( -html_size + $(this).scrollTop());
-    div.style.marginTop = mT+"px";
-  });
 </script>
