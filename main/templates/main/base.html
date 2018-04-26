@@ -16,6 +16,7 @@
     
     {% block estilo %}{% endblock %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+
 <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed" rel="stylesheet">
  
   </head>
@@ -164,7 +165,7 @@
                 <span class="input-group-label"><i class="fi-mail"></i></span>
                 <input class="input-group-field" type="text" name="email">
                 <div class="input-group-button">
-                  <input type="submit" class="button" value="Suscribirse">
+                  <input type="submit" class="button" value=">">
                 </div>
               </div>
 
@@ -225,12 +226,5 @@ $(window).scroll(function(){
     console.log("--------------");
     console.log( -html_size + $(this).scrollTop());
     div.style.marginTop = mT+"px";
-/*
-    var aTop = $('.ad').height();
-    if($(this).scrollTop()>=aTop){
-        alert('header just passed.');
-        // instead of alert you can use to show your ad
-        // something like $('#footAd').slideup();
-    }*/
   });
 </script>

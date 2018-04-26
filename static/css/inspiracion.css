@@ -1,17 +1,17 @@
- h1{
+content  h1{
 	color:#6D3A4B;
 
 	font-size: 35px;
 	padding-bottom: 5px;
 }
 
-.texto_cool{
+content .texto_cool{
 	font-size: 35px;
 	text-align: right;
 	font-style: italic;
 }
 @media (max-width: 1000px) {
-    #sticky a img{
+	content #sticky a img{
 		width: 100px;
 		margin-top: 40px;
 		margin-left:10px;
@@ -22,7 +22,7 @@ content{
 	padding-right: 20px;
 }
 }
-h3{ 
+content h3{ 
 	color:#6D3A4B;
 
 	font-size: 35px;
@@ -36,64 +36,64 @@ content ul{
 	font-size: 20px;
 }
 
-p{
+content p{
 	text-align: justify;
 	font-size: 17px;
 	margin-top: 15px;
 	margin-bottom: 15px;
 	color: #7e8185;
 }
-.titulo{
+content .titulo{
 	margin-top: 0px;
 }
 content{
 	margin-bottom:20px; 
 }
-.slide_3 {
+content .slide_3 {
 	display: flex;
 	width: 100%;
 }
-.orbit-next{
+content .orbit-next{
 	background: rgba(10, 10, 10, 0.5);
 }
-.orbit-previous{
+content .orbit-previous{
 
 	background:rgba(10, 10, 10, 0.5);
 }
-.aliados_slide{
+content .aliados_slide{
 	display: grid;
 	grid-template-columns: repeat(auto-fill,200px);
 	grid-gap: 25px;
 	width: 100%;
 	justify-content: space-around;
 }
-.ban2{
+content .ban2{
 	margin-bottom: 30px;
 	width: 100%;
 }
-.ban2 img{
+content .ban2 img{
 	width: 100%;
 
 	}
 @media (max-width: 940px) {
 	    
-	.aliados_slide {
+	content .aliados_slide {
 		grid-template-columns: repeat(auto-fill,300px);
 		}
 }
-.prensa_slide{
+content .prensa_slide{
 	display: grid;
 	grid-template-columns: repeat(auto-fill,250px);
 	grid-gap: 25px;
 	width: 100%;
 	justify-content: center;
 }
-.prensa_slide div img{
+content .prensa_slide div img{
 	width: 65%;
 	margin-left: 17.5%;
 	
 }
-.prensa_slide p{
+content .prensa_slide p{
 
 	text-align: center;
 }

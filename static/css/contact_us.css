@@ -1,4 +1,4 @@
- h2{
+content  h2{
 
 	color:#6D3A4B;
 
@@ -9,14 +9,14 @@
 	width: 100%;
 }
 
-p{
+content p{
 	text-align: justify;
 	font-size: 17px;
 	margin-top: 15px;
 	margin-bottom: 15px;
 	color: #7e8185;
 }
-h1{
+content h1{
 	color:#6D3A4B;
 
 	font-size: 40px;
@@ -25,15 +25,15 @@ h1{
 	padding-top: 50px;
 	margin-bottom: 90px;
 }
-label{
+content label{
 	font-size: 17px;
 }
-form button{
+content form button{
 	color: #fff;
 	background: #6D3A4B;
 	padding: 10px;
 }
-textarea{
+content textarea{
 
 	text-align: justify;
 }
@@ -42,19 +42,20 @@ content{
 	padding-right: 20px;
 	margin-bottom:20px; 
 }
-.map{
+content .map{
 
 	margin-top: 30px;
 }
 
 @media (max-width: 1000px) {
-    #sticky a img{
+	content #sticky a img{
 		width: 100px;
 		margin-top: 40px;
 		margin-left:10px;
 	}
-}@media (max-width: 630px) {
-	.map img{
+}
+@media (max-width: 630px) {
+	content .map img{
 
 		width: 100%;
 	}
@@ -62,11 +63,11 @@ content{
 
     
 
-.ban2{
+content .ban2{
 	margin-bottom: 30px;
 	width: 100%;
 }
-.ban2 img{
+content .ban2 img{
 	width: 100%;
 
 	}
