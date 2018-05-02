@@ -171,9 +171,9 @@
               </div>
               <div class="input-group email_data">
                 <span class="input-group-label"><i class="fi-mail"></i></span>
-                <input class="input-group-field" type="text" name="email">
+                <input class="input-group-field" id="email_newsletter" type="text" name="email">
                 <div class="input-group-button">
-                  <input type="submit" class="button" value=">">
+                  <input type="submit" class="button suscribe" value=">">
                 </div>
               </div>
 
@@ -198,22 +198,22 @@
 
 {% block js %}{% endblock %}
 <script type="text/javascript">
-$(".btn_len").click(function(e) {
-    console.log(window.location.pathname);
-    e.preventDefault();
-    $.ajax({ 
-        type: "GET",
-        url: "{% url 'switch_to_len' %}",
-        data: { 'i':window.location.href,'len':this.id
-        },
-        success: function(result) {
-            console.log(window.location.href);
-            location.reload();
-        },
-        error: function(result) {
-            console.log('error');
-        }
-    });
-});
+  $(".btn_len").click(function(e) {
+      console.log(window.location.pathname);
+      e.preventDefault();
+      $.ajax({ 
+          type: "GET",
+          url: "{% url 'switch_to_len' %}",
+          data: { 'i':window.location.href,'len':this.id
+          },
+          success: function(result) {
+              console.log(window.location.href);
+              location.reload();
+          },
+          error: function(result) {
+              console.log('error');
+          }
+      });
+  });
 
 </script>

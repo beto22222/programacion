@@ -21,4 +21,4 @@ $(".send_email").click(function(e) {
           }
       });
     
-});
+}); 

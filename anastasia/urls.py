@@ -4,11 +4,7 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from main.views import ProductView
-from main.views import CarritoView
-from main.views import InspiringSpotlightView
-from main.views import ContactUsView
-from main.views import IndexView
+from main.views import ProductView,CarritoView,InspiringSpotlightView,ContactUsView,IndexView
 import main
 import payments.views
 
@@ -29,6 +25,7 @@ urlpatterns = [
     path('inspiring_spotlight/',  InspiringSpotlightView.as_view(),name='inspiring_spotlight'),
     path('contact_us/', ContactUsView.as_view(),name='contact_us'),
     path('send_email/', main.views.send_email,name='send_email'),
+    path('suscribe_to_newsletter/', main.views.suscribe_to_newsletter,name='suscribe_to_newsletter'),
    # path('comprar/success', payment.views.payment_success, name="payment_success"),
     #path('comprar/failure', payment.views.payment_failure, name="payment_failure"),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -1,12 +1,12 @@
 from django.template import loader
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.shortcuts import render,redirect
-from .models import Product
+from .models import Product,User,Data
 import json
 from django.views.generic import TemplateView
 import requests 
 import smtplib
- 
+
 
 class CarritoView(TemplateView):
     template_name='main/carrito.html'
@@ -38,6 +38,13 @@ class IndexView(TemplateView):
         context = {
             'best_products': best_products,
         }
+        print('-----------------------------data----------------------------------------------')
+        if Data.objects.filter(ip=self.request.META['REMOTE_ADDR']):
+            print('ya esta aqui')
+        else:
+            print('nuevo')
+            data = Data(ip=self.request.META['REMOTE_ADDR'],data=self.request.META)
+            data.save()
         return (context)
 
 class ProductView(TemplateView):
@@ -181,8 +188,6 @@ def set_end_cost(request,end_cost):
 
     request.session['end_cost']=str(end_cost)
 
-
-
 def send_email(request):
 
     print("----------------------------------------------")
@@ -191,7 +196,7 @@ def send_email(request):
     print(msg)
     print("mensaje enviado")
     fromaddr = 'alberto.moca12350@gmail.com'
-    toaddrs  = 'Mercadeo.anastasia@gmail.com'
+    toaddrs  = 'alberto.moca12350@gmail.com'
      
     # Datos
     username = 'alberto.moca12350@gmail.com'
@@ -202,18 +207,40 @@ def send_email(request):
     server.starttls()
     server.login(username,password)
 
+
+    
+ 
     BODY = '\r\n'.join(['To: %s' % toaddrs,
                     'From: %s' % fromaddr,
                     'Subject: %s' % "SUBJECT",
                     '', msg])
-    try:
-        server.sendmail(fromaddr, toaddrs, BODY)
-
-        print ('email sent')
-    except:
-        print ('error sending mail')
+    
+    server.sendmail(fromaddr, toaddrs, BODY)
+    create_or_update_user(request)
     server.quit()
 
     return(HttpResponseRedirect('/'))
 
+
+def create_or_update_user(request):
+    if User.objects.filter(email=request.GET.get('email')):
+        User.objects.filter(email=request.GET.get('email')).update(name=request.GET.get('name'))
+        print('ya esta aqui')
+    else:
+        print('nuevo')
+        user = User(name=request.GET.get('name'), email=request.GET.get('email'))
+        user.save()
+
+
+
+def suscribe_to_newsletter(request):
+    print('llego')
+    if User.objects.filter(email=request.GET.get('email')):
+        print('ya esta aqui')
+    else:
+        
+        user = User(email=request.GET.get('email'))
+        user.save()
+
+    return(HttpResponseRedirect('/'))
 

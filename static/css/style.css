@@ -60,7 +60,12 @@ header p{
 
 }
 .options a:nth-child(2) button:active {
-	background: #DC752A;
+
+	opacity:.5;
+
+}
+.options a:nth-child(2) button:active :after {
+    content: ">>";
 
 }
 .options a:nth-child(1) button{

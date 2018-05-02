@@ -31,7 +31,6 @@ class ProductImage(models.Model):
 	def __str__(self):
 		return self.image.url
 
-
 class ProductCategory(models.Model):
 	created_at=models.DateTimeField(auto_now_add=True)
 	updated_at=models.DateTimeField(auto_now=True)
@@ -45,4 +44,23 @@ class ProductCategory(models.Model):
 	def __str__(self):
 		return self.name
 
+
+class User(models.Model):
+	
+	id=models.AutoField(primary_key=True)
+	name=models.CharField(max_length=200,null=True,blank=True)
+	email=models.CharField(max_length=200)
+	productos=models.TextField(max_length=400,null=True,blank=True)
+
+	def __str__(self):
+		return self.email
+
+class Data(models.Model):
+	
+	id=models.AutoField(primary_key=True)
+	ip=models.CharField(max_length=200,null=True,blank=True)
+	data=models.TextField(max_length=900,null=True,blank=True)
+
+	def __str__(self):
+		return self.ip
 
